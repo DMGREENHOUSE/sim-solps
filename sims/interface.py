@@ -33,6 +33,9 @@ class SolpsInterface:
             self.vol = solps.variables["vol"].data.copy().flatten()
             self.dmb2 = solps.variables["dmb2"].data[trim].copy().flatten()
             self.tmb2 = solps.variables["tmb2"].data[trim].copy().flatten() / 1.602e-19
+            self.tab2 = solps.variables['tab2'].data[trim].copy().flatten() / 1.602e-19
+            self.b_pol = solps.variables['bb'].data.copy()[0].flatten()
+            self.b_tor = solps.variables['bb'].data.copy()[2].flatten()
 
             self.n_cells = self.ne.size
             self.variable_map = {k: v for k, v in solps_variable_map.items()}
@@ -231,4 +234,8 @@ solps_variable_map = {
     "molecular density": "dmb2",
     "molecular temperature": "tmb2",
     "cell volume": "vol",
+    "magnetic field poloidal": "b_pol",
+    "magnetic field toroidal": "b_tor",
+    "neutral temperature": "tab2",
+    "neutral density": "nab2",
 }
